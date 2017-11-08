@@ -5,9 +5,10 @@
 
 - clean: ['~']
 
+- link:
+    ~/.dotfiles: ''
+    ~/.config/bspwm:
+    ~/.config/sxhkd:
+
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
-
-- link:
-  ~/.config/bspwm:
-  ~/.config/sxhkd:
