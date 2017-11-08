@@ -1,9 +1,15 @@
 #! /bin/sh
 # From Manjaro-Bspwm, a little bit modified so far, adjustments to be made
+
+# Variables
 gap=0
 PANEL_HEIGHT=25
+
 export gap
 export PANEL_HEIGHT
+
+#Start Sxhkd
+sxhkd &
 
 #This creates negative padding equal to window gap so that gaps are shown only between windows and not on desktop edges.
 bspc config window_gap $gap;
