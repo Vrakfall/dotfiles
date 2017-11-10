@@ -11,6 +11,9 @@
     ~/.config/sxhkd:
     #/etc/udev/hwdb.d/90-zboard-merc.hwdb: 'hwdb.d/90-zboard-merc-normal-no-caps-lock.hwdb'
     ~/.keymaps:
+    ~/.bashrc:
+    ~/.xprofile:
+    ~/.gitconfig:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
