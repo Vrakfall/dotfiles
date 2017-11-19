@@ -31,7 +31,7 @@ if [[ $FOCUSED_MONITOR != $WANTED_DESKTOP ]]; then
     bspc desktop $WANTED_DESKTOP --swap $FOCUSED_MONITOR
     # bspc desktop $T --activate
 
-    # Then sort the desktops
+    # Then sort the desktops.
     # TODO: Check if it's not easier to sort them all at once
     bspc monitor -o $(bspc query -D -m ^1 | sort -n)
     bspc monitor -o $(bspc query -D -m ^2 | sort -n)

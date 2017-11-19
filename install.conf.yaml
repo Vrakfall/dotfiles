@@ -3,7 +3,7 @@
       relink: true
       create: true
 
-- clean: ['~', '~/.config', '~/.keymaps']
+- clean: ['~', '~/.config', '~/.keymaps', '~/.bin']
 
 - link:
     ~/.dotfiles: ''
@@ -14,6 +14,10 @@
     ~/.bashrc:
     ~/.xprofile:
     ~/.gitconfig:
+    ~/.config/polybar:
+    ~/.Xresources:
+    ~/.config/systemd/user: 'systemd/user'
+    ~/.profile:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

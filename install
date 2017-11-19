@@ -13,8 +13,7 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
 
-echo "Now linking system-wide-files"
-# Should check if user is vrakfall, shouldn't be done more than once per host
-# Should actually check if this isn't dangerous cause it is certainly scary
-sudo ln -sf /home/vrakfall/.keymaps /usr/share/X11/xkb/keymaps
-sudo ln -sf /home/vrakfall/.dotfiles/usr/bin/lightdm-display-setup-script.sh /usr/bin/
+# System-wide files"
+echo "Now installing system-wide files"
+find keymaps/ -type f -exec sudo install -Dm 644 "{}" "/usr/share/X11/xkb/{}" \;
+find usr/bin/ -type f -exec sudo install -Dm 755 "{}" "/usr/bin/" \;
