@@ -1,5 +1,6 @@
 #!/bin/bash
+export SXHKD_SHELL='/usr/bin/sh'
 setxkbmap be
 test -f ~/.keymaps/xorg/zboard-merc-part1-normal.xkb && xkbcomp -i 11 ~/.keymaps/xorg/zboard-merc-part1-normal.xkb $DISPLAY
 test -f ~/.keymaps/xorg/zboard-merc-part2-normal-no-caps-lock.xkb && xkbcomp -i 12 ~/.keymaps/xorg/zboard-merc-part2-normal-no-caps-lock.xkb $DISPLAY
-
+feh --bg-scale ~/Pictures/Wallpapers/Arch/AirplicityWS.jpg
