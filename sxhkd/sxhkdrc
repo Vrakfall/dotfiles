@@ -1,17 +1,20 @@
-﻿# bspwm hotkeys
-#
+#!/usr/bin/env sh
+# From Manjaro-Bspwm, a little bit modified so far, adjustments to be made
+
+# bspwm hotkeys
+
 # Cleanly quit bspwm
-super + shift + q
-	bspc quit 1 && pkill lemonpanel && pkill lemonbar
-	
+# Mmmh, no thanks. But kept as a reminder to make a logout and a restart bsp/X action.
+
 # Toggle panels
-super + shift + space
-	{pkill lemonpanel; pkill lemonbar; pkill cat; pkill stalonetray; bspc config top_padding $((-$gap)) ,\
-	bspc config top_padding $(($PANEL_HEIGHT-$gap)); lemonpanel & }
+# super + shift + space
+# 	{pkill lemonpanel; pkill lemonbar; pkill cat; pkill stalonetray; bspc config top_padding $((-$gap)) ,\
+# 	bspc config top_padding $(($PANEL_HEIGHT-$gap)); lemonpanel & }
+# Could make something like this when polybar will be in place.
 
 # Show keybindings
-super + F1
-	$TERMINAL -e keybindings.sh
+# To be replaced
+
 #
 # Window manipulation
 # ______________
@@ -20,25 +23,29 @@ super + F1
 super + x
 	bspc  node -c
 
-# Kill windowzd
+# Kill window (actually kills all windows from the same bin, isn't there something more precise?)
 super + shift + x
 	bspc  node -k
 
-# Toggle tiling mode of window
+# Toggle pseudo tiling mode of window
 super + shift + t
 	bspc node -t {pseudo_tiled,tiled}
+
+# Toggle tiling mode of window
 super + t
 	{bspc node -t floating && window-placer $(bspc query -T -d | grep -o '"state":"floating"' | wc -l),bspc node -t tiled}
+
 # Force all windows of the desktop to tile
 super + ctrl + t
 	bspcp tile
+
 # Force all windows of the desktop to float and arrange them
 super + ctrl + shift + t
 	bspcp float
-	
+
 # Toggle fullscreen
-super + shift + f 
-	bspc node -t {fullscreen,tiled}	
+super + shift + f
+	bspc node -t {fullscreen,tiled}
 
 # Try to keep size and position of the selected window
 super + o
@@ -50,7 +57,7 @@ super + i
 
 # Lock a window from closing
 super + Escape
-	bspc node -g locked 
+	bspc node -g locked
 
 ### Map or unmap windows (functional equivalent of "minimize")
 super + c
@@ -64,7 +71,7 @@ super + ctrl + c
 
 #
 # Window moving and splitting
-# ______________    
+# ______________
 
 # Autopresel (split window in its largest dimension)
 super + ctrl + Return
@@ -72,7 +79,7 @@ super + ctrl + Return
 
 ctrl + space
 	auto-presel
-	
+
 # Presel window for splitting in certain direction
 alt + ctrl + {a,s,w,d}
 	bspc node -p \~{west,south,north,east} -i
@@ -95,7 +102,7 @@ alt + shift + {Left,Down,Up,Right}
 # Set splitting ratio of windows
 alt + ctrl + {1-9}
 	bspc node -o 0.{1-9}
-		
+
 # Move current window to largest space or preselected area if there is one.
 super + Return
     windowpromoter
@@ -103,10 +110,10 @@ super + Return
 # Create a new "master area", splitting the whole desktop instead of just windows.
 ctrl + alt + Return
 	bspc node -n @/
-	
+
 # go (Shift=move) to desktop (and focus the monitor that the desktop is located on. Bspwm style)
-super + {_,shift + }{1-9,0}
-    bspc {desktop -f,node -d} ^{1-9,10}
+# super + {_,shift + }{F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
+#     bspc {desktop -f,node -d} ^{1,2,3,4,5,6,7,8,9,10,11,12}
 
 ## Alternative: i3 style behavior (focus nth, desktop of the focused monitor)
 #super + {1-9,0}
@@ -116,14 +123,14 @@ super + {_,shift + }{1-9,0}
 
 ## Another alternative: xmonad style desktops. You have 10 desktops shared between all monitors,
 ## and focusing a desktop focuses it on the currently focused monitor
-#super + {1-9,0}
-#	summondesktop.sh {1-9,10}
-#super + shift + {1-9,0}
-#	bspc node -d ^{1-9,10}
+super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
+	/home/vrakfall/.bin/summondesktop.sh {1,10,11,100,101,110,111,1000,1001,1010,1011,1100}
+super + shift + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
+	bspc node -d ^{1,2,3,4,5,6,7,8,9,10,11,12}
 
 # Select previous / next desktop
 super + {m,n}
-	bspc desktop -f {prev.occupied,next.occupied} 
+	bspc desktop -f {prev.occupied,next.occupied}
 
 # cycle windows
 alt + {_,shift + }Tab
@@ -132,7 +139,7 @@ alt + {_,shift + }Tab
 # Go to specific window
 super + Tab
 	WindowSelector
-	
+
 #Focus windows by direction, works with multihead
 super +  {a,s,w,d}
     focusmover {west,south,north,east}
@@ -142,16 +149,16 @@ super +  {h,j,k,l}
 
 super +  {Left,Down,Up,Right}
     focusmover {west,south,north,east}
-        	
-# Move tiled windows. Moving a tiled window to 
-# preselected one moves into preselection instead. 
+
+# Move tiled windows. Moving a tiled window to
+# preselected one moves into preselection instead.
 # Moving out of the screen should move the window to next monitor if possible
 super + shift + {a,s,w,d}
 	windowgrabber {west,south,north,east}
 
 super + shift + {h,j,k,l}
 	windowgrabber {west,south,north,east}
-	
+
 # Different style of movement: transplant into window in chosen direction
 super + shift + {Left,Down,Up,Right}
 	euclid_mover {west,south,north,east}
@@ -162,18 +169,18 @@ super + ctrl + {a,s,w,d}
 
 super + ctrl + {h,j,k,l}
 	bspwm_resize.sh {west,south,north,east}
-	
+
 super + ctrl + {Left,Down,Up,Right}
 	bspwm_resize.sh {west,south,north,east}
 
 #
 # Layout manipulation/desktop level controls
-# ______________    
+# ______________
 
 # Toggle monocle mode
-super + f 
+super + f
 	bspc desktop -l next
-	
+
 # Balance tree
 super + b
 	bspc node @/ -B
@@ -181,7 +188,7 @@ super + b
 # Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.
 super + alt + b
 	bspc node @brother -B
-	
+
 # Undo balancing (equalize windows)
 super + ctrl + b
 	bspc node @/ -E
@@ -193,7 +200,7 @@ alt + b
 # Mirror and flip leaves of tree
 super + {comma,period}
 	bspc node @/ -F {horizontal,vertical}
-	
+
 # Rotate leaves of tree
 super + shift + {comma,period}
 	bspc node @/ -R {90,270}
@@ -220,7 +227,7 @@ super + button{4,5}
 #
 ##super + @button{1-3}
 ##	bspc pointer -u
-## Needed to focus windows by clicking, if you wish to disable 
+## Needed to focus windows by clicking, if you wish to disable
 ## focus_follows_mouse behavior (required to use menu of xfdesktop, whiskermenu or click java apps)
 #~button1
 #	bspc pointer -g focus && xdo raise $(pfw)
@@ -234,10 +241,10 @@ super + ctrl + button5
 super + ctrl + button4
     bspcp dsktp add
 
-# Spawn applications popup menu and manually tile selected 
+# Spawn applications popup menu and manually tile selected
 # app where your mouse was when you opened the menu. Smartsplit only chooses
 # biggest dimension of the window, MouseLaunch only cares which edge is closer.
-# mod5 is alt_gr (first key right from space) on most keyboards. 
+# mod5 is alt_gr (first key right from space) on most keyboards.
 mod5 + @button1
     MouseLaunch ; mygtkmenui -- .config/GTKmenu/LaunchMenu
 #	smartsplit ; dboxmenu
@@ -248,7 +255,7 @@ mod1 + @button1
 #    BspwmWindowMenu
     mygtkmenui -- .config/GTKmenu/BspwmWindowMenui
 
-# These two are needed if you want to use xfdesktops menus while 
+# These two are needed if you want to use xfdesktops menus while
 # focus_follows_pointer is on
 #@button3
 #	clickpasser 3
@@ -266,7 +273,7 @@ mod1 + @button1
 ### Three finger swipe (up) to launch dswitcher
 #@button8
 #    dswitcher & xdotool mousemove 640 400
-    
+
 #
 # spawn programs
 #
@@ -275,20 +282,21 @@ mod1 + @button1
 super + space
 	dmouse
 
-super + p
-	dmenu_recent -h $PANEL_HEIGHT
+# Find another shortcut (if it's even useful), taken by private flag
+# super + p
+# 	dmenu_recent -h $PANEL_HEIGHT
 
 super + shift + Return
 	$TERMINAL
 super + z
 	$TERMINAL
-	
+
 super + r
 	finder
 
 super + shift + b
 	$BROWSER
-    		
+
 super + e
 	spacefm
 
@@ -298,7 +306,7 @@ super + shift + e
 Print
 	scrot -q 100
 
-	
+
 #
 # Media keys
 #
@@ -311,13 +319,13 @@ XF86AudioLowerVolume
 
 XF86AudioMute
 	volume mute
-	
+
 XF86MonBrightnessDown
- xbacklight -dec 10 
+ xbacklight -dec 10
 
 XF86MonBrightnessUp
  xbacklight -inc 10
- 
+
 
 XF86Sleep
 	systemctl suspend
@@ -328,10 +336,10 @@ super + shift + Escape
 
 # In case bspwmrc fails to execute/you wish have plugged in a new monitor
 super + shift + r
-	bspwmrc
+	~/.config/bspwm/bspwmrc
 #edit this file
-alt + ctrl + space
-	$GUI_EDITOR ~/.config/sxhkd/sxhkdrc
+# alt + ctrl + space
+# 	$GUI_EDITOR ~/.config/sxhkd/sxhkdrc
 # Toggle compositing
 super + ctrl + space
 	{pkill compton ,\
@@ -344,4 +352,3 @@ super + BackSpace
 # Paste primary selection
 ctrl + shift + space
   sh -c 'xsel | xvkbd -file - 2>/dev/null'
-  
