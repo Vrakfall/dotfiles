@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Get the first HDMI display
-DISPLAY_HDMI0=$(xrandr -q | sed -n 's/\(^HDMI-[0-9]\(-[0-9]\)\?\) connected.*/\1/p')
+export DISPLAY_HDMI0=$(xrandr -q | sed -n 's/\(^HDMI-[0-9]\(-[0-9]\)\?\) connected.*/\1/p')
 # Get the first DVI display
-DISPLAY_DVI0=$(xrandr -q | sed -n 's/\(^DVI-I\(-[0-9]\)\?\) connected.*/\1/p')
+export DISPLAY_DVI0=$(xrandr -q | sed -n 's/\(^DVI-I\(-[0-9]\)\?\) connected.*/\1/p')
 
 # Place the displays correctly
 # TODO Place the DVI one a bit lower
