@@ -278,9 +278,9 @@ mod1 + @button1
 # spawn programs
 #
 
-# run applications
+# Launch command (with rofi)
 super + space
-	dmouse
+	rofi -show run
 
 # Find another shortcut (if it's even useful), taken by private flag
 # super + p
