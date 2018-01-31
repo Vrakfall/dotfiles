@@ -1467,8 +1467,8 @@ xkb_symbols "pc+be+inet(evdev)" {
     key <KPEN> {         [        KP_Enter ] };
     key <RCTL> {         [       Control_R ] };
     key <KPDV> {
-        type= "FOUR_LEVEL_SEMIALPHABETIC",
-        symbols[Group1]= [               s,               S,          ssharp,         section ]
+        type= "TWO_LEVEL",
+        symbols[Group1]= [               s,               S ]
     };
     key <PRSC> {
         type= "PC_ALT_LEVEL2",
@@ -1506,7 +1506,10 @@ xkb_symbols "pc+be+inet(evdev)" {
     key <LWIN> {         [         Super_L ] };
     key <RWIN> {         [         Super_R ] };
     key <COMP> {         [            Menu ] };
-    key <STOP> {         [          Cancel ] };
+    key <STOP> {
+        type= "TWO_LEVEL",
+        symbols[Group1]= [               s,               S ]
+    };
     key <AGAI> {         [            Redo ] };
     key <PROP> {         [        SunProps ] };
     key <UNDO> {         [            Undo ] };
@@ -1518,7 +1521,7 @@ xkb_symbols "pc+be+inet(evdev)" {
     key  <CUT> {         [         XF86Cut ] };
     key <HELP> {         [            Help ] };
     key <I147> {         [      XF86MenuKB ] };
-    key <I148> {         [  XF86Calculator ] };
+    key <I148> {         [             Tab,    ISO_Left_Tab ] };
     key <I150> {         [       XF86Sleep ] };
     key <I151> {         [      XF86WakeUp ] };
     key <I152> {         [    XF86Explorer,     KP_Multiply ] };
@@ -1531,17 +1534,20 @@ xkb_symbols "pc+be+inet(evdev)" {
     key <I160> {         [ XF86ScreenSaver ] };
     key <I161> {         [ XF86RotateWindows ] };
     key <I162> {         [    XF86TaskPane ] };
-    key <I163> {         [        XF86Mail ] };
+    key <I163> {         [           Alt_L,          Meta_L ] };
     key <I164> {
-        type= "FOUR_LEVEL_SEMIALPHABETIC",
-        symbols[Group1]= [               r,               R,       paragraph,      registered ]
+        type= "TWO_LEVEL",
+        symbols[Group1]= [               r,               R ]
     };
     key <I165> {         [  XF86MyComputer ] };
     key <I166> {
-        type= "FOUR_LEVEL_ALPHABETIC",
-        symbols[Group1]= [               q,               Q,              ae,              AE ]
+        type= "TWO_LEVEL",
+        symbols[Group1]= [               q,               Q ]
     };
-    key <I167> {         [     XF86Forward ] };
+    key <I167> {
+        type= "TWO_LEVEL",
+        symbols[Group1]= [               d,               D ]
+    };
     key <I169> {         [       XF86Eject ] };
     key <I170> {         [       XF86Eject,       XF86Eject ] };
     key <I171> {         [   XF86AudioNext ] };
@@ -1553,12 +1559,12 @@ xkb_symbols "pc+be+inet(evdev)" {
     key <I177> {         [       XF86Phone ] };
     key <I179> {         [       XF86Tools ] };
     key <I180> {
-        type= "FOUR_LEVEL_ALPHABETIC",
-        symbols[Group1]= [               z,               Z,         lstroke,         Lstroke ]
+        type= "TWO_LEVEL",
+        symbols[Group1]= [               z,               Z ]
     };
     key <I181> {
-        type= "FOUR_LEVEL_SEMIALPHABETIC",
-        symbols[Group1]= [               a,               A,              at,     Greek_OMEGA ]
+        type= "TWO_LEVEL",
+        symbols[Group1]= [               a,               A ]
     };
     key <I182> {         [       XF86Close ] };
     key <I185> {         [    XF86ScrollUp ] };
@@ -1596,8 +1602,8 @@ xkb_symbols "pc+be+inet(evdev)" {
     key <I223> {         [        XF86Mail ] };
     key <I224> {         [   XF86Messenger ] };
     key <I225> {
-        type= "FOUR_LEVEL_SEMIALPHABETIC",
-        symbols[Group1]= [               e,               E,        EuroSign,            cent ]
+        type= "TWO_LEVEL",
+        symbols[Group1]= [               e,               E ]
     };
     key <I226> {         [          XF86Go ] };
     key <I227> {         [     XF86Finance ] };

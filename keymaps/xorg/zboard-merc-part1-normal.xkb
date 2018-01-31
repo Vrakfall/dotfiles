@@ -1439,7 +1439,7 @@ xkb_symbols "pc+be+inet(evdev)" {
     key  <KP2> {         [         KP_Down,            KP_2 ] };
     key  <KP3> {         [         KP_Next,            KP_3 ] };
     key  <KP0> {         [       KP_Insert,            KP_0 ] };
-    key <KPDL> {         [       KP_Delete,      KP_Decimal ] };
+    key <KPDL> {         [       Control_L ] };
     key <LVL3> {
         type= "ONE_LEVEL",
         symbols[Group1]= [ ISO_Level3_Shift ]
@@ -1510,7 +1510,10 @@ xkb_symbols "pc+be+inet(evdev)" {
     key <AGAI> {         [            Redo ] };
     key <PROP> {         [        SunProps ] };
     key <UNDO> {         [            Undo,      KP_Decimal ] };
-    key <FRNT> {         [        SunFront ] };
+    key <FRNT> {
+        type= "TWO_LEVEL",
+        symbols[Group1]= [               m,               M ]
+    };
     key <COPY> {         [        XF86Copy,            KP_3 ] };
     key <OPEN> {
         type= "FOUR_LEVEL_ALPHABETIC",
