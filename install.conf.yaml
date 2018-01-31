@@ -15,9 +15,12 @@
     ~/.xprofile:
     ~/.gitconfig:
     ~/.config/polybar:
+    ~/.config/dunst:
+    ~/.config/compton.conf:
     ~/.Xresources:
     ~/.config/systemd/user: 'systemd/user'
     ~/.profile:
+    ~/.bin:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

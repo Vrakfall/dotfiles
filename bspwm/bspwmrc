@@ -1,9 +1,18 @@
-#! /bin/sh
+#! /usr/bin/env bash
 # From Manjaro-Bspwm, a little bit modified so far, adjustments to be made
+# Some parts are also taken jaagr/dots source code
+
+# Check if we're trully running bspwm
+if ! bspc wm -g &>/dev/null; then
+  exit 1
+fi
+
+# Kindly stop what could be left of these
+killall -q polybar lemonbar xdrawrect
 
 # Variables
 gap=0
-PANEL_HEIGHT=25
+PANEL_HEIGHT=20
 
 export gap
 export PANEL_HEIGHT
@@ -13,6 +22,14 @@ if ! pgrep -x "sxhkd" > /dev/null
 then
   sxhkd &
 fi
+
+# Java fix, so the windows are displayed properly
+wmname LG3D &
+
+# Source the theme
+[[ -e "themes/drArchula" ]] && {
+  source "themes/drArchula"
+}
 
 #This creates negative padding equal to window gap so that gaps are shown only between windows and not on desktop edges.
 bspc config window_gap $gap;
@@ -122,4 +139,29 @@ bspc config external_rules_command /usr/bin/pseudo_automatic_mode
 
 ###Custom
 ##Wallpaper
-feh --bg-scale /usr/share/backgrounds/LogicWavelength_wood-logo.jpg
+# feh --bg-scale /usr/share/backgrounds/LogicWavelength_wood-logo.jpg
+# In xprofile. TODO Check later where's the best place for this
+
+# Get Polybar's wm name
+local polybar_main_wm_name=polybar "main" --config="/home/vrakfall/.config/polybar/config" --print-wmname 2>/dev/null
+local polybar_second_screen_wm_name=polybar "second-scren" --config="/home/vrakfall/.config/polybar/config" --print-wmname 2>/dev/null
+
+# Draw the background bars
+xdrawrect ${DISPLAY_HDMI0} top 100% 23 0 2 '#dd45485f' "effectline-${DISPLAY_HDMI0}-top-0" ${polybar_main_wm_name}&
+wait 30
+xdrawrect ${DISPLAY_HDMI0} top 100% 1 0 21 '#dd45485f' "effectline-${DISPLAY_HDMI0}-top-1" ${polybar_main_wm_name}&
+wait 40
+xdrawrect ${DISPLAY_HDMI0} top 100% 1 0 22 '#22ffffff' "effectline-${DISPLAY_HDMI0}-top-1" ${polybar_main_wm_name}&
+wait 30
+
+xdrawrect ${DISPLAY_DVI0} top 100% 23 0 2 '#dd45485f' "effectline-${DISPLAY_DVI0}-top-0" ${polybar_second_screen_wm_name}&
+wait 30
+xdrawrect ${DISPLAY_DVI0} top 100% 1 0 21 '#dd45485f' "effectline-${DISPLAY_DVI0}-top-1" ${polybar_second_screen_wm_name}&
+wait 30
+xdrawrect ${DISPLAY_DVI0} top 100% 1 0 22 '#22ffffff' "effectline-${DISPLAY_DVI0}-top-1" ${polybar_second_screen_wm_name}&
+wait 30
+
+# Start polybar
+$HOME/.config/polybar/launch.sh
+
+compton&
