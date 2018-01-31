@@ -126,7 +126,7 @@ ctrl + alt + Return
 super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
 	summondesktop.sh {1,10,11,100,101,110,111,1000,1001,1010,1011,1100}
 super + shift + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
-	bspc node -d ^{1,2,3,4,5,6,7,8,9,10,11,12}
+	bspc node -d {1,10,11,100,101,110,111,1000,1001,1010,1011,1100}
 
 # Select previous / next desktop
 super + {m,n}

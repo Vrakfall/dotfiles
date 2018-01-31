@@ -21,11 +21,12 @@ if [[ $FOCUSED_MONITOR != $WANTED_DESKTOP ]]; then
     bspc desktop $WANTED_DESKTOP --focus
   # Else if the wanted desktop's monitor isn't the last one of that monitor
   elif [[ $(bspc query -D -m $WANTED_DESKTOP_MONITOR | wc -l) -gt 1 ]]; then
-    # Then pull & focus it
+    # Then pull
     bspc desktop $WANTED_DESKTOP --to-monitor focused
+    # Re-order the Desktops
+    bspc monitor -o $(bspc query -D -m focused --names | sort -n)
+    # Then focus is cause it might no be
     bspc desktop $WANTED_DESKTOP --focus
-    # And re-order the Desktops
-    bspc monitor -o $(bspc query -D -m focused | sort -n)
   else
     # Swap it with this one
     bspc desktop $WANTED_DESKTOP --swap $FOCUSED_MONITOR
@@ -33,7 +34,8 @@ if [[ $FOCUSED_MONITOR != $WANTED_DESKTOP ]]; then
 
     # Then sort the desktops.
     # TODO: Check if it's not easier to sort them all at once
-    bspc monitor -o $(bspc query -D -m ^1 | sort -n)
-    bspc monitor -o $(bspc query -D -m ^2 | sort -n)
+    # bspc monitor -o $(bspc query -D -m ^1 | sort -n)
+    # bspc monitor -o $(bspc query -D -m ^2 | sort -n)
+    bspc monitor -o $(bspc query -D --names | sort -n)
   fi
 fi
