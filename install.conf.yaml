@@ -10,7 +10,7 @@
     ~/.config/bspwm:
     ~/.config/sxhkd:
     #/etc/udev/hwdb.d/90-zboard-merc.hwdb: 'hwdb.d/90-zboard-merc-normal-no-caps-lock.hwdb'
-    ~/.keymaps:
+    ~/.keymaps: 'keyboard/keymaps'
     ~/.bashrc:
     ~/.xprofile:
     ~/.gitconfig:
