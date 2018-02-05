@@ -1,6 +1,6 @@
 #!/bin/sh
 
 export TERMINAL=roxterm
-export BROWSER=firefox
+export BROWSER=vivaldi-stable
 
 export PATH="/home/vrakfall/.bin:$PATH"
