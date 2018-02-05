@@ -20,3 +20,4 @@ find keymaps/ -type f -exec sudo install -Dm 644 "{}" "/usr/share/X11/xkb/{}" \;
 cd ..
 find etc/ -type f -exec sudo install -m 644 "{}" "/etc/" \;
 find usr/bin/ -type f -exec sudo install -m 755 "{}" "/usr/bin/" \;
+find keyboard/scancodeToKeycode/ -type f -exec sudo install -Dm 644 "{}" "/etc/udev/hwdb.d/" \;

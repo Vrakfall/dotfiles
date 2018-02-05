@@ -13,5 +13,11 @@ xrandr --output $DISPLAY_HDMI0 --primary --output $DISPLAY_DVI0 --right-of $DISP
 setxkbmap be
 
 # Check if the custom keymaps for the ZBoard are there and if so, use them.
-test -f /usr/share/X11/xkb/keymaps/xorg/zboard-merc-part1-normal.xkb && xkbcomp -i 11 /usr/share/X11/xkb/keymaps/xorg/zboard-merc-part1-normal.xkb $DISPLAY
-test -f /usr/share/X11/xkb/keymaps/xorg/zboard-merc-part2-normal-no-caps-lock.xkb && xkbcomp -i 12 /usr/share/X11/xkb/keymaps/xorg/zboard-merc-part2-normal-no-caps-lock.xkb $DISPLAY
+#
+#   This is for when the scancodes aren't remapped
+# test -f /usr/share/X11/xkb/keymaps/xorg/zboard-merc-part1-normal.xkb && xkbcomp -i 11 /usr/share/X11/xkb/keymaps/xorg/zboard-merc-part1-normal.xkb $DISPLAY
+# test -f /usr/share/X11/xkb/keymaps/xorg/zboard-merc-part2-normal-no-caps-lock.xkb && xkbcomp -i 12 /usr/share/X11/xkb/keymaps/xorg/zboard-merc-part2-normal-no-caps-lock.xkb $DISPLAY
+
+#   For when scancodes are remapped with 90-zboard-merc-normal-no-capslock.hwdb
+test -f /usr/share/X11/xkb/keymaps/xorg/zboard-merc-part1-remapped-normal-no-capslock.xkb && xkbcomp -i 11 /usr/share/X11/xkb/keymaps/xorg/zboard-merc-part1-remapped-normal-no-capslock.xkb $DISPLAY
+test -f /usr/share/X11/xkb/keymaps/xorg/zboard-merc-part2-remapped-normal-no-capslock.xkb && xkbcomp -i 12 /usr/share/X11/xkb/keymaps/xorg/zboard-merc-part2-remapped-normal-no-capslock.xkb $DISPLAY

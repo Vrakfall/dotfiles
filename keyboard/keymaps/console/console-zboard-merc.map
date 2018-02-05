@@ -1,3 +1,4 @@
+'Only for original keycodes
 keycode 128 = KP_Divide
 keycode 136 = KP_7
 keycode 102 = KP_8
