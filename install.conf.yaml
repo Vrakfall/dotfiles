@@ -9,6 +9,7 @@
     ~/.dotfiles: ''
     ~/.config/bspwm:
     ~/.config/sxhkd:
+    ~/.config/rofi:
     #/etc/udev/hwdb.d/90-zboard-merc.hwdb: 'hwdb.d/90-zboard-merc-normal-no-caps-lock.hwdb'
     ~/.keymaps: 'keyboard/keymaps'
     ~/.bashrc:

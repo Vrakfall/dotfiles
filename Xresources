@@ -78,8 +78,8 @@ XLogo*geometry: 	150x150
 Xclock*geometry: 	150x150-0-0
 Xclock*background: 	#121314
 
-rofi.color-enabled: true
-rofi.color-window: argb:bb212121, argb:ff181818, #212121
-rofi.color-normal: argb:ee212121, #e5dbda, argb:ee212121, argb:20313737, #7bae5c
-rofi.padding: 400
-rofi.separator-style: none
+!rofi.color-enabled: true
+!rofi.color-window: argb:bb212121, argb:ff181818, #212121
+!rofi.color-normal: argb:ee212121, #e5dbda, argb:ee212121, argb:20313737, #7bae5c
+!rofi.padding: 400
+!rofi.separator-style: none
