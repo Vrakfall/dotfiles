@@ -9,7 +9,7 @@ export SXHKD_SHELL='/usr/bin/sh'
 export BSPWM_SHELL='/usr/bin/sh'
 export BSPWMRC_SHELL='/usr/bin/sh'
 export TERMINAL=roxterm
-export BROWSER=firefox
+export BROWSER=vivaldi-stable
 
 export PATH="/home/vrakfall/.bin:$PATH"
 
