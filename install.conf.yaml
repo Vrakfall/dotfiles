@@ -20,6 +20,7 @@
     ~/.config/compton.conf:
     ~/.Xresources:
     ~/.config/systemd/user: 'systemd/user'
+    ~/.config/fish:
     ~/.profile:
     ~/.bin:
 
